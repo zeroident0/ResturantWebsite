@@ -1,0 +1,989 @@
+:root {
+    --kfc-red: #c51111;
+    --kfc-white: #FFFFFF;
+    --kfc-dark: #333333;
+    --kfc-light-red: #FF6347;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Pixelated cursor style */
+body, a, button, .card {
+    /* cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA4ElEQVQ4jZ2TMQrCQBBFXxCsbG1tLGwF7yAewc5D2HgCwVLwFnZWHsAzWFpY2loHdrP52WQT84ohs7P/vZ3ZWWjQaCuXAYQhCpw8boCd7RGqLQcaLYAdXV0C25g/A5qG9xiAg+3R9RjQFIDdl+AO6KhD1KRMzP1sBfwC0VgFzIGVw+aAuQGqgCK35IlKgCmwJH9JLTAxQFVQZs7/DFABGJE0g8c4MYBnUOgM7BNHoJ44s80bxQsweP+MZtd6C5S8iw5VQS3t7F2bTXE3s0u5JVR0+AXg5D52Vf4upaQvAXc8AUcNZYVj5COVAAAAAElFTkSuQmCC"), auto; */
+}
+
+/* Rest of the CSS remains the same, but removing custom cursor styles */
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--kfc-red) var(--kfc-white);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--kfc-white);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--kfc-red);
+    border-radius: 20px;
+    border: 3px solid var(--kfc-white);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--kfc-white);
+    color: var(--kfc-dark);
+    overflow-x: hidden;
+}
+
+.navbar {
+    background-color: var(--kfc-red);
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    color: var(--kfc-white) !important;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand img:hover {
+    transform: rotate(360deg);
+}
+
+.nav-link {
+    color: var(--kfc-white) !important;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    background-color: var(--kfc-white);
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1555992457-b8fefdd09069?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    color: var(--kfc-white);
+    text-align: center;
+    padding: 150px 0;
+    animation: slideIn 1s ease-out;
+}
+
+.btn-primary {
+    background-color: var(--kfc-red);
+    border-color: var(--kfc-red);
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: all 0.6s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.menu-section .card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    perspective: 1000px;
+}
+
+.menu-section .card:hover {
+    transform: rotateY(10deg) translateY(-15px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.menu-section .card-img-top {
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.menu-section .card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+.about-section {
+    background-color: #F8F9FA;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.about-section img {
+    transition: transform 0.5s ease;
+}
+
+.about-section img:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.footer {
+    background-color: var(--kfc-red);
+    color: var(--kfc-white);
+    padding: 40px 0;
+}
+
+.footer a {
+    color: var(--kfc-white);
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer a:hover {
+    transform: scale(1.2) rotate(360deg);
+    color: var(--kfc-dark);
+}
+
+.social-icon {
+    font-size: 1.5rem;
+}
+
+/* Deals Section Styles */
+.deals-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.deals-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23c51111" opacity="0.1"/><circle cx="80" cy="40" r="1.5" fill="%23c51111" opacity="0.1"/><circle cx="40" cy="80" r="1" fill="%23c51111" opacity="0.1"/></svg>');
+    animation: float 20s infinite linear;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-100px); }
+}
+
+.deal-card {
+    background: var(--kfc-white);
+    border-radius: 15px;
+    padding: 30px 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.deal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(197, 17, 17, 0.1), transparent);
+    transition: all 0.6s;
+}
+
+.deal-card:hover::before {
+    left: 100%;
+}
+
+.deal-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(197, 17, 17, 0.2);
+    border-color: var(--kfc-red);
+}
+
+.deal-badge {
+    background: linear-gradient(45deg, var(--kfc-red), var(--kfc-light-red));
+    color: var(--kfc-white);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+    position: relative;
+    z-index: 2;
+}
+
+.deal-image {
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.deal-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.deal-card:hover .deal-image {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(197, 17, 17, 0.2);
+}
+
+.deal-card:hover .deal-image img {
+    transform: scale(1.1);
+}
+
+.deal-description {
+    color: var(--kfc-dark);
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.deal-price {
+    margin-bottom: 20px;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 1.1rem;
+    margin-right: 10px;
+}
+
+.sale-price {
+    color: var(--kfc-red);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Locations Section Styles */
+.locations-section {
+    background-color: var(--kfc-white);
+    position: relative;
+}
+
+.location-card {
+    background: var(--kfc-white);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-left: 5px solid var(--kfc-red);
+    position: relative;
+    overflow: hidden;
+}
+
+.location-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(197, 17, 17, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(30px, -30px);
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.location-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.status-badge {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.status-badge.open {
+    background-color: #28a745;
+    color: white;
+}
+
+.location-info p {
+    margin-bottom: 10px;
+    color: var(--kfc-dark);
+}
+
+.location-info i {
+    color: var(--kfc-red);
+    margin-right: 10px;
+    width: 20px;
+}
+
+.location-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-outline-primary {
+    border-color: var(--kfc-red);
+    color: var(--kfc-red);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--kfc-red);
+    border-color: var(--kfc-red);
+    color: var(--kfc-white);
+}
+
+/* Contact Section Styles */
+.contact-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+}
+
+.contact-info {
+    background: var(--kfc-white);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    background: rgba(197, 17, 17, 0.05);
+    transform: translateX(10px);
+}
+
+.contact-item i {
+    color: var(--kfc-red);
+    font-size: 1.5rem;
+    margin-right: 20px;
+    margin-top: 5px;
+    min-width: 30px;
+}
+
+.contact-item strong {
+    color: var(--kfc-red);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-item p {
+    margin: 0;
+    color: var(--kfc-dark);
+}
+
+.contact-form {
+    background: var(--kfc-white);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.contact-form .form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.contact-form .form-control:focus {
+    border-color: var(--kfc-red);
+    box-shadow: 0 0 0 0.2rem rgba(197, 17, 17, 0.25);
+}
+
+.contact-form textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .deal-card {
+        padding: 25px 15px;
+    }
+    
+    .location-card {
+        padding: 25px;
+    }
+    
+    .contact-info, .contact-form {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-section {
+        padding: 100px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    /* Menu Section Tablet */
+    .menu-section h2 {
+        font-size: 2rem;
+    }
+    
+    .menu-section .card-img-top {
+        height: 220px;
+    }
+    
+    .deal-image img {
+        height: 190px;
+    }
+    
+    .deal-card {
+        margin-bottom: 30px;
+    }
+    
+    .location-card {
+        margin-bottom: 30px;
+    }
+    
+    .contact-info {
+        margin-bottom: 30px;
+    }
+    
+    /* About Section Tablet */
+    .about-section {
+        padding: 60px 0;
+    }
+    
+    .about-section h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+    
+    .navbar-brand img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .hero-section {
+        padding: 80px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-section .lead {
+        font-size: 1rem;
+    }
+    
+    .btn-primary {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    
+    /* Menu Section Mobile */
+    .menu-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .menu-section .card-img-top {
+        height: 200px;
+    }
+    
+    .menu-section .card-title {
+        font-size: 1.1rem;
+    }
+    
+    .menu-section .card-text {
+        font-size: 0.9rem;
+    }
+    
+    .menu-section .h4 {
+        font-size: 1.2rem;
+    }
+    
+    /* About Section Mobile */
+    .about-section {
+        padding: 50px 0;
+    }
+    
+    .about-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    
+    .about-section p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    
+    .about-section img {
+        margin-top: 20px;
+    }
+    
+    /* Deals Section Mobile */
+    .deals-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .deal-card {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .deal-badge {
+        font-size: 0.7rem;
+        padding: 6px 15px;
+    }
+    
+    .deal-image {
+        margin-bottom: 15px;
+    }
+    
+    .deal-image img {
+        height: 180px;
+    }
+    
+    .deal-card h4 {
+        font-size: 1.2rem;
+    }
+    
+    .deal-description {
+        font-size: 0.9rem;
+    }
+    
+    .sale-price {
+        font-size: 1.3rem;
+    }
+    
+    .original-price {
+        font-size: 1rem;
+    }
+    
+    /* Locations Section Mobile */
+    .locations-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .location-card {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .location-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .location-header h4 {
+        font-size: 1.2rem;
+    }
+    
+    .location-actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .location-actions .btn {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .location-info {
+        text-align: center;
+    }
+    
+    .location-info p {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+    
+    /* Contact Section Mobile */
+    .contact-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contact-info, .contact-form {
+        padding: 25px 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .contact-info h4, .contact-form h4 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+    
+    .contact-item i {
+        margin-right: 0;
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+    }
+    
+    .contact-item strong {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    
+    .contact-item p {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    
+    .contact-form .form-control {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    
+    .contact-form textarea.form-control {
+        min-height: 100px;
+    }
+    
+    .contact-form .btn {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .hero-section {
+        padding: 60px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+    
+    .hero-section .lead {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+    }
+    
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* Menu Section Small Screens */
+    .menu-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .menu-section .card-img-top {
+        height: 180px;
+    }
+    
+    .menu-section .card-title {
+        font-size: 1rem;
+    }
+    
+    .menu-section .card-text {
+        font-size: 0.8rem;
+    }
+    
+    .menu-section .h4 {
+        font-size: 1.1rem;
+    }
+    
+    /* About Section Small Screens */
+    .about-section {
+        padding: 40px 0;
+    }
+    
+    .about-section h2 {
+        font-size: 1.4rem;
+    }
+    
+    .about-section p {
+        font-size: 0.8rem;
+    }
+    
+    /* Extra small screens */
+    .deals-section h2,
+    .locations-section h2,
+    .contact-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+    
+    .deal-card {
+        padding: 15px 10px;
+    }
+    
+    .deal-image img {
+        height: 160px;
+    }
+    
+    .deal-card h4 {
+        font-size: 1.1rem;
+    }
+    
+    .deal-description {
+        font-size: 0.8rem;
+    }
+    
+    .location-card {
+        padding: 15px;
+    }
+    
+    .location-header h4 {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+    
+    .location-info {
+        text-align: center;
+    }
+    
+    .contact-info, .contact-form {
+        padding: 20px 15px;
+        text-align: center;
+    }
+    
+    .contact-info h4, .contact-form h4 {
+        text-align: center;
+    }
+    
+    .contact-item {
+        padding: 12px;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .contact-item strong, .contact-item p {
+        text-align: center;
+    }
+    
+    .contact-form .form-control {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: 0.9rem;
+    }
+    
+    .navbar-brand img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .nav-link {
+        font-size: 0.9rem;
+        margin: 0 5px;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-section .lead {
+        font-size: 0.8rem;
+    }
+    
+    /* Menu Section Extra Small */
+    .menu-section h2 {
+        font-size: 1.3rem;
+    }
+    
+    .menu-section .card-img-top {
+        height: 160px;
+    }
+    
+    .menu-section .card-title {
+        font-size: 0.9rem;
+    }
+    
+    .menu-section .card-text {
+        font-size: 0.75rem;
+    }
+    
+    .menu-section .h4 {
+        font-size: 1rem;
+    }
+    
+    /* About Section Extra Small */
+    .about-section {
+        padding: 30px 0;
+    }
+    
+    .about-section h2 {
+        font-size: 1.2rem;
+    }
+    
+    .about-section p {
+        font-size: 0.75rem;
+    }
+    
+    .deal-badge {
+        font-size: 0.6rem;
+        padding: 4px 12px;
+    }
+    
+    .deal-image img {
+        height: 140px;
+    }
+    
+    .deal-card h4 {
+        font-size: 1rem;
+    }
+    
+    .deal-description {
+        font-size: 0.75rem;
+    }
+    
+    .sale-price {
+        font-size: 1.1rem;
+    }
+    
+    .original-price {
+        font-size: 0.9rem;
+    }
+    
+    .location-header h4 {
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    .location-info {
+        text-align: center;
+    }
+    
+    .location-info p {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    
+    .contact-info, .contact-form {
+        text-align: center;
+    }
+    
+    .contact-info h4, .contact-form h4 {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+    
+    .contact-item {
+        text-align: center;
+        align-items: center;
+    }
+    
+    .contact-item strong {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    
+    .contact-item p {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero-section {
+        padding: 50px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-section .lead {
+        font-size: 0.9rem;
+    }
+}
